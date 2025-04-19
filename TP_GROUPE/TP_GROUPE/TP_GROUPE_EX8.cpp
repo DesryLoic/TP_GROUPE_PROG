@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 /************ QUESTION 2 ***********/
 using namespace std;
 struct Produit
@@ -112,7 +113,6 @@ vector<Produit> selectionnerProduits(DonneesP1& donnees, int& totalBenefice, int
 vector<Produit> selectionnerProduitsAleatoires(DonneesP1& donnees, int& totalBenefice, int& totalConsommation)
 {
     vector<Produit> selection;
-    cout << "[DEBUG] Appel de selectionnerProduitsAleatoires avec " << donnees.nb_produits << " produits" << endl;
 
     int capaciteRestante = donnees.capaciteVehicule; // Capacité disponible du véhicule
     totalBenefice = 0;
@@ -192,16 +192,14 @@ int main(int argc, char* argv[]) {
     int totalConsommation = 0;
 
     vector<Produit> selection = selectionnerProduitsAleatoires(donneesP1, totalBenefice, totalConsommation);
-    cout << "[DEBUG] Total des produits lus : " << donneesP1.nb_produits << endl;
-
     // Calcul pondéré
-    double scorePondere = 0.7 * totalBenefice - 0.3 * totalConsommation;
+    double scorePondere = (totalConsommation > 0) ? static_cast<double>(totalBenefice) / totalConsommation : 0.0;
 
     std::cout << "\n=== Résumé (réplication " << graine << ") ===" << std::endl;
     std::cout << "Réplication : " << graine << std::endl;
     std::cout << "Bénéfice total : " << totalBenefice << std::endl;
     std::cout << "Consommation totale : " << totalConsommation << std::endl;
-    std::cout << "Score pondéré : " << scorePondere << std::endl;
+    std::cout << "Score pondere : " << std::fixed << std::setprecision(2) << scorePondere << endl;
 
 
 
