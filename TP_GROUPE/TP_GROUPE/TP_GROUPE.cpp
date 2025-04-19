@@ -6,6 +6,9 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <unordered_set>
+#include <limits>
+#include <random>
 /************ QUESTION 2 ***********/
 using namespace std;
 struct Produit
@@ -81,6 +84,46 @@ bool lireFichierP2(const string& nomFichier, DonneesP2& donnees) {
 
 
 /************ QUESTION 4 ***********/
+
+// Fonction pour sélectionner le parcours
+vector<int> construireTournee(DonneesP2& donnees, int& coutTotal) {
+
+    int N = donnees.nb_villes;
+    vector<int> tournee;
+    unordered_set<int> nonVisitees;
+
+    int depart = 0; // on commence par la première ville
+
+    for (int i = 0; i < N; ++i) {
+        if (i != depart) {
+            nonVisitees.insert(i);
+        }
+    }
+
+    tournee.push_back(depart);
+    coutTotal = 0;
+    int villeActuelle = depart;
+
+    while (!nonVisitees.empty()) {
+        int meilleureVille = -1;
+        int meilleurCout = numeric_limits<int>::max();
+        for (int ville : nonVisitees) {
+            int cout = donnees.matriceDistances[villeActuelle][ville];
+            if (cout < meilleurCout) {
+                meilleurCout = cout;
+                meilleureVille = ville;
+            }
+        }
+        tournee.push_back(meilleureVille);
+        nonVisitees.erase(meilleureVille);
+        coutTotal += meilleurCout;
+        villeActuelle = meilleureVille;
+    }
+
+    return tournee;
+}
+
+
 //Fonction pour sélectionner les produits à charger dans le véhicule
 vector<Produit> selectionnerProduits(DonneesP1& donnees, int& totalBenefice, int& totalConsommation) {
     vector<Produit> selection;
@@ -108,6 +151,55 @@ vector<Produit> selectionnerProduits(DonneesP1& donnees, int& totalBenefice, int
 }
 
 /************ QUESTION 5 ***********/
+// Fonction pour le parcours (randomisé)
+vector<int> construireTourneeRandom(DonneesP2& donnees, int& coutTotal) {
+
+    int N = donnees.nb_villes;
+
+    if (donnees.matriceDistances.empty() || donnees.matriceDistances[0].size() != N) {
+        cerr << "Erreur : Matrice de distances invalide." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    vector<int> tournee;
+    unordered_set<int> nonVisitees;
+
+    int depart = 0;
+    for (int i = 0; i < N; ++i)
+        if (i != depart) nonVisitees.insert(i);
+
+    tournee.push_back(depart);
+    coutTotal = 0;
+    int villeActuelle = depart;
+
+    mt19937 rng(random_device{}());
+    uniform_int_distribution<int> dist(0, 1);
+
+    while (!nonVisitees.empty()) {
+        vector<pair<int, int>> candidats;
+
+        for (int ville : nonVisitees)
+            candidats.push_back({ ville, donnees.matriceDistances[villeActuelle][ville] });
+
+        sort(candidats.begin(), candidats.end(), [](auto& a, auto& b) {
+            return a.second < b.second;
+            });
+
+        int indexChoisi = (candidats.size() > 1) ? dist(rng) : 0;
+
+        int meilleureVille = candidats[indexChoisi].first;
+        int meilleurCout = candidats[indexChoisi].second;
+
+        tournee.push_back(meilleureVille);
+        nonVisitees.erase(meilleureVille);
+        coutTotal += meilleurCout;
+        villeActuelle = meilleureVille;
+    }
+
+    return tournee;
+}
+
+
 
 vector<Produit> selectionnerProduitsAleatoires(DonneesP1& donnees, int& totalBenefice, int& totalConsommation)
 {
@@ -206,10 +298,28 @@ int main(int argc, char* argv[]) {
 
     int totalBenefice = 0;
     int totalConsommation = 0;
+    int coutTotal = 0;
     /**** Question 4 ****/
     //vector<Produit> selection = selectionnerProduits(donneesP1, totalBenefice, totalConsommation);
-
+    /*vector<int> tournee = construireTournee(donneesP2, coutTotal);
+    cout << "\n--- Tournee gloutonne ---" << endl;
+    for (int v : tournee) {
+        cout << donneesP2.villes[v] << " -> ";
+    }
+    cout << "FIN" << endl;
+    cout << "Cout total (energie consommée) : " << coutTotal << " kWh" << endl;
+    */
     /**** Question 5 ****/
+    vector<int> tournee = construireTourneeRandom(donneesP2, coutTotal);
+
+    // Affichage du résultat
+    cout << "Tournee generee : ";
+    for (int ville : tournee) {
+        cout << ville << " ";  // Affiche les indices des villes dans l'ordre de visite
+    }
+    cout << endl;
+    cout << "Cout total de la tournee : " << coutTotal << endl;
+
     vector<Produit> selection = selectionnerProduitsAleatoires(donneesP1, totalBenefice, totalConsommation);
 
     cout << "\nProduits selectionnes :" << endl;
