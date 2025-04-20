@@ -1,0 +1,6 @@
+=== Meilleure solution pour P1 ===
+=== Résumé (réplication 5) ===
+Réplication : 5
+Bénéfice total : 19
+Consommation totale : 34
+Score pondere : 0.56
