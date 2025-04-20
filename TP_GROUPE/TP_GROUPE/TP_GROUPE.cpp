@@ -9,8 +9,12 @@
 #include <unordered_set>
 #include <limits>
 #include <random>
+#include <chrono>
+#include <ctime>
+
 /************ QUESTION 2 ***********/
 using namespace std;
+using namespace chrono;
 struct Produit
 {
     int id;
@@ -259,6 +263,8 @@ vector<Produit> selectionnerProduitsAleatoires(DonneesP1& donnees, int& totalBen
 }
 
 
+
+
 //argc est le nombre d'arguments passé dans le programme, et argv un tableau contenant ces arguments
 int main(int argc, char* argv[]) {
     /**** Question 2 ****/
@@ -331,6 +337,56 @@ int main(int argc, char* argv[]) {
     cout << "Benefice total : " << totalBenefice << endl;
     cout << "Energie consommee : " << totalConsommation << " / " << donneesP1.capaciteVehicule << endl;
 
+
+
+
+
+    //QUESTION 12 
+
+          
+   
+        string cheminP1 = "../TP_GROUPE/P1EXO12.txt";
+        string cheminP2 = "../TP_GROUPE/P2EXO12.txt"; // chemins des fichiers créés dans TP_GROUPE_EXO 12
+
+        // Chronométrage de l'exécution
+        auto start = high_resolution_clock::now(); 
+
+        // Lecture des données à partir des fichiers générés
+        DonneesP1 p1;
+        DonneesP2 p2;
+        if (!lireFichierP1(cheminP1, p1)) {
+            cerr << "Erreur lors de la lecture de " << cheminP1 << endl;
+            return 1;
+        }
+        if (!lireFichierP2(cheminP2, p2)) {
+            cerr << "Erreur lors de la lecture de " << cheminP2 << endl;
+            return 1;
+        }
+
+        // Exécution des algorithmes
+
+        int coutTournee = 0;
+        construireTournee(p2, coutTournee);
+
+        int benef = 0, conso = 0; 
+        selectionnerProduits(p1, benef, conso); 
+
+        auto end = high_resolution_clock::now(); 
+        auto duree = duration_cast<milliseconds>(end - start);  
+
+        // Affichage des résultats dans la console
+        cout << "\n===== Résultat du Benchmark EXO12 =====" << endl;
+
+
+        cout << "Temps d'exécution (ms)       : " << duree.count() << endl;
+        cout << "Nombre de produits chargés   : " << p1.produits.size() << endl;
+        cout << "Nombre de villes             : " << p2.nb_villes << endl;
+        cout << "Coût total de la tournée     : " << coutTournee << endl;
+        cout << "Bénéfice total               : " << benef << endl;
+        cout << "Consommation totale          : " << conso << endl;
+
+      
+  
 
 
     return 0;
