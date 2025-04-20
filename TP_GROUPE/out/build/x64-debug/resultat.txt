@@ -1,0 +1,120 @@
+
+=== Résumé (réplication 1) ===
+Réplication : 1
+Bénéfice total : 21
+Consommation totale : 38
+Score pondere : 0.55
+
+=== Résumé (réplication 2) ===
+Réplication : 2
+Bénéfice total : 22
+Consommation totale : 40
+Score pondere : 0.55
+
+=== Résumé (réplication 3) ===
+Réplication : 3
+Bénéfice total : 22
+Consommation totale : 40
+Score pondere : 0.55
+
+=== Résumé (réplication 4) ===
+Réplication : 4
+Bénéfice total : 19
+Consommation totale : 35
+Score pondere : 0.54
+
+=== Résumé (réplication 5) ===
+Réplication : 5
+Bénéfice total : 19
+Consommation totale : 34
+Score pondere : 0.56
+
+=== Résumé (réplication 6) ===
+Réplication : 6
+Bénéfice total : 19
+Consommation totale : 34
+Score pondere : 0.56
+
+=== Résumé (réplication 7) ===
+Réplication : 7
+Bénéfice total : 21
+Consommation totale : 40
+Score pondere : 0.53
+
+=== Résumé (réplication 8) ===
+Réplication : 8
+Bénéfice total : 21
+Consommation totale : 40
+Score pondere : 0.53
+
+=== Résumé (réplication 9) ===
+Réplication : 9
+Bénéfice total : 19
+Consommation totale : 34
+Score pondere : 0.56
+
+=== Résumé (réplication 10) ===
+Réplication : 10
+Bénéfice total : 21
+Consommation totale : 38
+Score pondere : 0.55
+
+=== Résumé (réplication 11) ===
+Réplication : 11
+Bénéfice total : 22
+Consommation totale : 40
+Score pondere : 0.55
+
+=== Résumé (réplication 12) ===
+Réplication : 12
+Bénéfice total : 22
+Consommation totale : 40
+Score pondere : 0.55
+
+=== Résumé (réplication 13) ===
+Réplication : 13
+Bénéfice total : 22
+Consommation totale : 40
+Score pondere : 0.55
+
+=== Résumé (réplication 14) ===
+Réplication : 14
+Bénéfice total : 22
+Consommation totale : 40
+Score pondere : 0.55
+
+=== Résumé (réplication 15) ===
+Réplication : 15
+Bénéfice total : 21
+Consommation totale : 38
+Score pondere : 0.55
+
+=== Résumé (réplication 16) ===
+Réplication : 16
+Bénéfice total : 21
+Consommation totale : 40
+Score pondere : 0.53
+
+=== Résumé (réplication 17) ===
+Réplication : 17
+Bénéfice total : 21
+Consommation totale : 40
+Score pondere : 0.53
+
+=== Résumé (réplication 18) ===
+Réplication : 18
+Bénéfice total : 21
+Consommation totale : 40
+Score pondere : 0.53
+
+=== Résumé (réplication 19) ===
+Réplication : 19
+Bénéfice total : 19
+Consommation totale : 34
+Score pondere : 0.56
+
+=== Résumé (réplication 20) ===
+Réplication : 20
+Bénéfice total : 19
+Consommation totale : 35
+Score pondere : 0.54
