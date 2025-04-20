@@ -345,8 +345,8 @@ int main(int argc, char* argv[]) {
 
           
    
-        string cheminP1 = "../TP_GROUPE/P1EXO12.txt";
-        string cheminP2 = "../TP_GROUPE/P2EXO12.txt"; // chemins des fichiers créés dans TP_GROUPE_EXO 12
+        string cheminP1 = "P1EXO12.txt";
+        string cheminP2 = "P2EXO12.txt"; // chemins des fichiers créés dans TP_GROUPE_EXO 12
 
         // Chronométrage de l'exécution
         auto start = high_resolution_clock::now(); 
@@ -378,11 +378,11 @@ int main(int argc, char* argv[]) {
         cout << "\n===== Résultat du Benchmark EXO12 =====" << endl;
 
 
-        cout << "Temps d'exécution (ms)       : " << duree.count() << endl;
-        cout << "Nombre de produits chargés   : " << p1.produits.size() << endl;
+        cout << "Temps d'execution (ms)       : " << duree.count() << endl;
+        cout << "Nombre de produits charges   : " << p1.produits.size() << endl;
         cout << "Nombre de villes             : " << p2.nb_villes << endl;
-        cout << "Coût total de la tournée     : " << coutTournee << endl;
-        cout << "Bénéfice total               : " << benef << endl;
+        cout << "Cout total de la tournee     : " << coutTournee << endl;
+        cout << "Benefice total               : " << benef << endl;
         cout << "Consommation totale          : " << conso << endl;
 
       
